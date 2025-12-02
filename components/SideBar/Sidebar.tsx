@@ -1,10 +1,4 @@
-import {
-  Layers,
-  LayoutDashboard,
-  Settings,
-  Split,
-  StickyNote,
-} from 'lucide-react';
+'use client';
 
 import {
   Sidebar,
@@ -15,36 +9,37 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { useUserData } from '@/context/userDataProvider';
+import { useRouter } from 'next/navigation';
 
-const items = [
-  {
-    title: 'Dashboard',
-    url: '/',
-    icon: LayoutDashboard,
-  },
-  {
-    title: 'Branches',
-    url: '/branches',
-    icon: Split,
-  },
-  {
-    title: 'View Requisition Form',
-    url: '/requisition',
-    icon: StickyNote,
-  },
-  {
-    title: 'Inventory',
-    url: '/inventory',
-    icon: Layers,
-  },
-  {
-    title: 'Settings',
-    url: '/setting',
-    icon: Settings,
-  },
-];
+import { hoheadItems } from '@/lib/hohead.data';
+import { hostaffItems } from '@/lib/hostaff.data';
+import { LogOut } from 'lucide-react';
+import { boheadItems } from '@/lib/bohead.data';
+import { bostaffItems } from '@/lib/bostaff.data';
 
-export function AppSidebar() {
+export default function AppSidebar() {
+  const { userRole, logout } = useUserData();
+  console.log(userRole);
+
+  const router = useRouter();
+
+  const items =
+    userRole === 'HOHead'
+      ? hoheadItems
+      : userRole === 'HOStaff'
+        ? hostaffItems
+        : userRole === 'BOHead'
+          ? boheadItems
+          : bostaffItems;
+
+  const handleLogout = () => {
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userPassword');
+    localStorage.removeItem('userRole');
+    logout();
+    router.push('/login');
+  };
   return (
     <Sidebar collapsible="icon">
       <SidebarContent className="bg-[#242423] text-white">
@@ -65,6 +60,19 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  tooltip="Logout"
+                  className="[&>svg]:size-5 py-6 text-[16px]"
+                >
+                  <button onClick={handleLogout}>
+                    <LogOut />
+                    <span className="flex gap-1">Logout</span>
+                  </button>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

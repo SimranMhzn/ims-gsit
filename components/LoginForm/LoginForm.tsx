@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { loginSchema, LoginFormValues } from './LoginForm.zod';
-import { useRouter } from 'next/navigation';
+import { useUserData } from '@/context/userDataProvider';
 
 export default function LoginForm() {
   const {
@@ -17,42 +17,10 @@ export default function LoginForm() {
     resolver: zodResolver(loginSchema),
   });
 
-  const router = useRouter();
+  const { login } = useUserData();
 
   const onSubmit = (values: LoginFormValues) => {
-    localStorage.setItem('userEmail', values.email);
-    localStorage.setItem('userPassword', values.password);
-    if (
-      values.email === 'headoffice@gmail.com' &&
-      values.password === 'head@123'
-    ) {
-      localStorage.setItem('userRole', 'HOHead');
-      router.push('/hohead');
-    } else if (
-      values.email === 'headoffice@gmail.com' &&
-      values.password === 'staff@123'
-    ) {
-      localStorage.setItem('userRole', 'HOStaff');
-      router.push('/hostaff');
-    } else if (
-      values.email === 'branchoffice@gmail.com' &&
-      values.password === 'head@123'
-    ) {
-      localStorage.setItem('userRole', 'BOHead');
-      router.push('/bohead');
-    } else if (
-      values.email === 'branchoffice@gmail.com' &&
-      values.password === 'staff@123'
-    ) {
-      localStorage.setItem('userRole', 'BOStaff');
-      router.push('/bostaff');
-    } else {
-      localStorage.deleteItem('userEmail', '');
-      localStorage.setItem('userPassword', '');
-      localStorage.setItem('userRole', '');
-      console.log('Invalid credentials');
-    }
-    console.log(values);
+    login(values);
     reset();
   };
 

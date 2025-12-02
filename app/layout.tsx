@@ -1,6 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import './globals.css';
-import { AppSidebar } from '@/components/SideBar/Sidebar';
+import LayoutShell from '@/components/LayoutShell/LayoutShell';
 
 export default function RootLayout({
   children,
@@ -9,13 +8,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <SidebarProvider>
-        <AppSidebar />
-        <body className="flex min-h-screen w-full">
-          <SidebarTrigger className="px-5" />
-          <main className="flex-1">{children}</main>
-        </body>
-      </SidebarProvider>
+      <body>
+        <LayoutShell>{children}</LayoutShell>
+      </body>
     </html>
   );
 }
