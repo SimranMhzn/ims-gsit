@@ -24,9 +24,7 @@ export default function RegisterForm() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full shadow-2xl rounded-2xl flex flex-col p-8 max-w-xl">
-        <h1 className=" font-bold text-3xl mb-6 text-orange-400">
-          Create Account
-        </h1>
+        <h1 className=" font-bold text-3xl mb-6">Create Account</h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col">
@@ -133,7 +131,7 @@ export default function RegisterForm() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="mt-4 rounded-none bg-orange-400 hover:bg-white hover:text-orange-400 hover:border-2 hover:border-orange-400 transition-all duration-500 ease-in-out"
+            className="mt-4 rounded-none hover:bg-white hover:text-black hover:border-2 hover:border-black transition-all duration-500 ease-in-out"
           >
             {isSubmitting ? 'Creating...' : 'CREATE ACCOUNT'}
           </Button>
