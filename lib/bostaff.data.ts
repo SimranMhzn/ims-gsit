@@ -4,13 +4,14 @@ import {
   Layers,
   LayoutDashboard,
   Settings,
+  User,
 } from 'lucide-react';
 
 export const bostaffItems = [
   {
-    title: 'Dashboard',
+    title: 'Inventory',
     url: '/bostaff',
-    icon: LayoutDashboard,
+    icon: Layers,
   },
   {
     title: 'Fill requisition order',
@@ -18,13 +19,8 @@ export const bostaffItems = [
     icon: FilePlusCorner,
   },
   {
-    title: 'Inventory',
-    url: '/bostaff/inventory',
-    icon: Layers,
-  },
-  {
-    title: 'Settings',
-    url: '/bostaff/setting',
-    icon: Settings,
+    title: 'Profile',
+    url: '/profile',
+    icon: User,
   },
 ];

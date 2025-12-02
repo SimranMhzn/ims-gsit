@@ -10,29 +10,31 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from '@/components/ui/input-group';
-import { Search } from 'lucide-react';
 import { Pagination } from './Components/Pagination';
+import Header from './Components/Header';
 
 export default function ProductsTable({ data }: { data: TableDataType[] }) {
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
+  const [productFilter, setProductFilter] = useState('');
+  const normalizedFilter = productFilter.trim().toLowerCase();
+
   const [category, setCategory] = useState('all');
 
-  const filteredData =
-    category && category !== 'all'
-      ? data.filter(
-          (item) => item.category.toLowerCase() === category.toLowerCase(),
-        )
-      : data;
+  const filteredData = data.filter((item) => {
+    const categoryMatch =
+      !category || category === 'all'
+        ? true
+        : (item.category || '').toLowerCase() === category.toLowerCase();
+    const textMatch = !normalizedFilter
+      ? true
+      : (item.name || '').toLowerCase().includes(normalizedFilter);
+
+    return categoryMatch && textMatch;
+  });
 
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
@@ -41,22 +43,9 @@ export default function ProductsTable({ data }: { data: TableDataType[] }) {
     setCurrentPage(1);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCategory(e.target.value);
-  };
   return (
     <div className="p-6 flex flex-col gap-5 w-full">
-      <div className="flex justify-between">
-        <div className="font-black text-3xl">View Inventory</div>
-        <div className="w-[300px]">
-          <InputGroup onChange={handleChange}>
-            <InputGroupInput placeholder="Search..." />
-            <InputGroupAddon>
-              <Search />
-            </InputGroupAddon>
-          </InputGroup>
-        </div>
-      </div>
+      <Header onFilterChange={setProductFilter} />
       <table className="w-full border rounded-md overflow-hidden">
         <thead className="bg-black/40 text-md text-white">
           <tr>
