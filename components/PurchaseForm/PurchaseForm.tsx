@@ -4,10 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  requisitionSchema,
-  RequisitionFormValues,
-} from './RequisitionForm.zod';
+import { purchaseSchema, PurchaseFormValues } from './PurchaseForm.zod';
 import {
   Select,
   SelectContent,
@@ -19,7 +16,7 @@ import {
 } from '../ui/select';
 import { toast } from 'sonner';
 
-export default function RequisitionForm() {
+export default function PurchaseForm() {
   const {
     register,
     handleSubmit,
@@ -27,11 +24,11 @@ export default function RequisitionForm() {
     watch,
     setValue,
     formState: { errors, isSubmitting },
-  } = useForm<RequisitionFormValues>({
-    resolver: zodResolver(requisitionSchema),
+  } = useForm<PurchaseFormValues>({
+    resolver: zodResolver(purchaseSchema),
   });
 
-  const onSubmit = (values: RequisitionFormValues) => {
+  const onSubmit = (values: PurchaseFormValues) => {
     reset();
     setValue('category', '');
     toast.success('Form submitted successfully!');
@@ -41,7 +38,7 @@ export default function RequisitionForm() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full shadow-2xl rounded-2xl flex flex-col p-8 max-w-xl">
-        <h1 className=" font-bold text-3xl mb-6 ">Fill Requisition Form</h1>
+        <h1 className=" font-bold text-3xl mb-6 ">Fill Purchase Form</h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col">

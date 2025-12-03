@@ -1,32 +1,21 @@
 'use client';
-import {
-  FilePlusCorner,
-  Layers,
-  LayoutDashboard,
-  Settings,
-  StickyNote,
-} from 'lucide-react';
+import { FilePlusCorner, Layers, Settings, StickyNote } from 'lucide-react';
 
 export const hostaffItems = [
   {
-    title: 'Dashboard',
+    title: 'Inventory',
     url: '/hostaff',
-    icon: LayoutDashboard,
+    icon: Layers,
   },
   {
-    title: 'View Requisition Form',
+    title: 'Pending Requisition Form',
     url: '/hostaff/requisition',
     icon: StickyNote,
   },
   {
     title: 'Fill purchase order',
-    url: '/hostaff/requisition',
+    url: '/hostaff/purchase',
     icon: FilePlusCorner,
-  },
-  {
-    title: 'Inventory',
-    url: '/hostaff/inventory',
-    icon: Layers,
   },
   {
     title: 'Settings',

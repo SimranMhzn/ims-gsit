@@ -1,5 +1,8 @@
 'use client';
 
+import ProductsTable from '@/components/Products/ProductsTable';
+import { productsData } from '@/components/Products/Components/products-data';
+
 export default function Page() {
-  return <h1>HO Staff Dashboard</h1>;
+  return <ProductsTable data={productsData} />;
 }

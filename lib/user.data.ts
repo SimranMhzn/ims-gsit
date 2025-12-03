@@ -1,0 +1,42 @@
+export const userData = [
+  {
+    email: 'john.doe@example.com',
+    password: 'SecurePass1!',
+    confirmpassword: 'SecurePass1!',
+    firstName: 'John',
+    lastName: 'Doe',
+    branchName: 'Kathmandu',
+  },
+  {
+    email: 'seemran.m@example.com',
+    password: 'AdminUser2@',
+    confirmpassword: 'AdminUser2@',
+    firstName: 'Seemran',
+    lastName: 'Maharjan',
+    branchName: 'Lalitpur',
+  },
+  {
+    email: 'sophia.rai@example.com',
+    password: 'AlphaTest3#',
+    confirmpassword: 'AlphaTest3#',
+    firstName: 'Sophia',
+    lastName: 'Rai',
+    branchName: 'Bhaktapur',
+  },
+  {
+    email: 'milan.shrestha@example.com',
+    password: 'PassWord4$',
+    confirmpassword: 'PassWord4$',
+    firstName: 'Milan',
+    lastName: 'Shrestha',
+    branchName: 'Pokhara',
+  },
+  {
+    email: 'anisha.gurung@example.com',
+    password: 'UserTest5%',
+    confirmpassword: 'UserTest5%',
+    firstName: 'Anisha',
+    lastName: 'Gurung',
+    branchName: 'Butwal',
+  },
+];
