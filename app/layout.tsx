@@ -1,6 +1,7 @@
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell/LayoutShell';
 import { Toaster } from 'sonner';
+import { UserDataProvider } from '@/context/userDataProvider';
 
 export default function RootLayout({
   children,
@@ -11,7 +12,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Toaster position="top-right" />
-        <LayoutShell>{children}</LayoutShell>
+        <UserDataProvider>
+          <LayoutShell>{children}</LayoutShell>
+        </UserDataProvider>
       </body>
     </html>
   );

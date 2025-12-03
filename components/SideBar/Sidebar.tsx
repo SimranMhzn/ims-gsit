@@ -31,7 +31,9 @@ export default function AppSidebar() {
         ? hostaffItems
         : userRole === 'BOHead'
           ? boheadItems
-          : bostaffItems;
+          : userRole === 'BOStaff'
+            ? bostaffItems
+            : [];
 
   const handleLogout = () => {
     localStorage.removeItem('userEmail');
@@ -40,7 +42,12 @@ export default function AppSidebar() {
     logout();
     router.push('/login');
   };
-  return (
+
+  return !userRole ? (
+    <div className="fixed h-screen w-screen bg-black z-999 flex items-center justify-center">
+      <div className="h-10 w-10 animate-spin border-l-3 border-t-3 border-white rounded-full"></div>
+    </div>
+  ) : (
     <Sidebar collapsible="icon">
       <SidebarContent className="bg-[#242423] text-white">
         <SidebarGroup>
