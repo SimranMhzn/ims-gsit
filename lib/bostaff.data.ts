@@ -1,11 +1,5 @@
 'use client';
-import {
-  FilePlusCorner,
-  Layers,
-  LayoutDashboard,
-  Settings,
-  User,
-} from 'lucide-react';
+import { FilePlusCorner, History, Layers, User } from 'lucide-react';
 
 export const bostaffItems = [
   {
@@ -17,6 +11,11 @@ export const bostaffItems = [
     title: 'Fill requisition order',
     url: '/bostaff/requisition',
     icon: FilePlusCorner,
+  },
+  {
+    title: 'Requisition order history',
+    url: '/bostaff/history',
+    icon: History,
   },
   {
     title: 'Profile',

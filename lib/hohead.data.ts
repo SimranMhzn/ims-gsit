@@ -2,7 +2,6 @@
 import {
   Layers,
   LayoutDashboard,
-  LogOut,
   Settings,
   Split,
   StickyNote,
