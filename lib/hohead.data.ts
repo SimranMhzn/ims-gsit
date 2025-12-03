@@ -2,9 +2,9 @@
 import {
   Layers,
   LayoutDashboard,
-  Settings,
   Split,
   StickyNote,
+  UserRound,
 } from 'lucide-react';
 
 export const hoheadItems = [
@@ -29,8 +29,8 @@ export const hoheadItems = [
     icon: Layers,
   },
   {
-    title: 'Settings',
-    url: '/hohead/setting',
-    icon: Settings,
+    title: 'Profile',
+    url: '/profile',
+    icon: UserRound,
   },
 ];

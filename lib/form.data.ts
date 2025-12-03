@@ -24,4 +24,20 @@ export const formData = [
     category: 'Stationery',
     status: 'Accepted',
   },
+  {
+    'form-id': '4',
+    productName: 'Cup',
+    amount: '200',
+    quantity: '12',
+    category: 'Machine',
+    status: 'Pending',
+  },
+  {
+    'form-id': '5',
+    productName: 'Pen',
+    amount: '15',
+    quantity: '50',
+    category: 'Stationery',
+    status: 'Pending',
+  },
 ];
