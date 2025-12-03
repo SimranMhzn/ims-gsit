@@ -9,12 +9,14 @@ import {
   RequisitionFormValues,
 } from './RequisitionForm.zod';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
 
 export default function RequisitionForm() {
   const {
@@ -94,52 +96,55 @@ export default function RequisitionForm() {
             <label className="mb-2 text-sm font-medium">
               Category <span className="text-red-600">*</span>
             </label>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  type="button"
-                  className="w-full text-left px-3 py-2 border rounded-md bg-white/5"
-                >
-                  {watch('category')
-                    ? watch('category').toString().toUpperCase()
-                    : 'Select category'}
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="start">
-                <DropdownMenuLabel>Category</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => setValue('category', 'all')}>
-                  All
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue('category', 'machine')}
-                >
-                  Machine
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue('category', 'security')}
-                >
-                  Security
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue('category', 'stationery')}
-                >
-                  Stationery
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue('category', 'electronics')}
-                >
-                  Electronics
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue('category', 'furniture')}
-                >
-                  Furniture
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setValue('category', 'it')}>
-                  IT
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Select
+              value={watch('category') || ''}
+              onValueChange={(v: string) => setValue('category', v)}
+            >
+              <SelectTrigger className="w-full rounded-none">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Category</SelectLabel>
+                  <SelectItem
+                    onClick={() => setValue('category', 'machine')}
+                    value="machine"
+                  >
+                    Machine
+                  </SelectItem>
+                  <SelectItem
+                    onClick={() => setValue('category', 'security')}
+                    value="security"
+                  >
+                    Security
+                  </SelectItem>
+                  <SelectItem
+                    onClick={() => setValue('category', 'stationery')}
+                    value="stationery"
+                  >
+                    Stationery
+                  </SelectItem>
+                  <SelectItem
+                    onClick={() => setValue('category', 'electronics')}
+                    value="electronics"
+                  >
+                    Electronics
+                  </SelectItem>
+                  <SelectItem
+                    onClick={() => setValue('category', 'furniture')}
+                    value="furniture"
+                  >
+                    Furniture
+                  </SelectItem>
+                  <SelectItem
+                    onClick={() => setValue('category', 'it')}
+                    value="it"
+                  >
+                    IT
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
             <input type="hidden" {...register('category')} />
             {errors.category && (
               <p className="text-sm text-red-600 mt-1">
@@ -153,7 +158,7 @@ export default function RequisitionForm() {
             disabled={isSubmitting}
             className="mt-4 rounded-none hover:bg-white hover:text-black hover:border-2 hover:border-black transition-all duration-500 ease-in-out"
           >
-            {isSubmitting ? 'Creating...' : 'CREATE ACCOUNT'}
+            {isSubmitting ? 'Uploading...' : 'UPLOAD'}
           </Button>
         </form>
       </div>

@@ -9,7 +9,7 @@ export const boheadItems = [
   },
   {
     title: 'View Requisition Form',
-    url: '/bohead/purchase',
+    url: '/bohead/requisition',
     icon: StickyNote,
   },
   {
@@ -19,7 +19,7 @@ export const boheadItems = [
   },
   {
     title: 'Settings',
-    url: '/bohead/setting',
+    url: '/profile',
     icon: Settings,
   },
 ];
