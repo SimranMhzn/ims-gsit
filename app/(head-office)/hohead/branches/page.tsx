@@ -16,19 +16,23 @@ export default function Page() {
         <Table className="w-full">
           <TableHeader className="bg-black/40">
             <TableRow>
-              <TableHead className="text-md text-white">BRANCH NAME</TableHead>
-              <TableHead className="text-md text-white">FULL NAME</TableHead>
+              <TableHead className="text-md text-white">LOCATION</TableHead>
               <TableHead className="text-md text-white">EMAIL</TableHead>
+              <TableHead className="text-md text-white">
+                BRNACH HEAD NAME
+              </TableHead>
+              <TableHead className="text-md text-white">CONTACT NO.</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {userData.map((data) => (
-              <TableRow key={data.email}>
-                <TableCell>{data.branchName}</TableCell>
+              <TableRow key={data.id}>
+                <TableCell>{data.location}</TableCell>
+                <TableCell>{data.email}</TableCell>
                 <TableCell>
                   {data.firstName} {data.lastName}
                 </TableCell>
-                <TableCell>{data.email}</TableCell>
+                <TableCell>{data.contact}</TableCell>
               </TableRow>
             ))}
           </TableBody>

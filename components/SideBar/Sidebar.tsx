@@ -17,6 +17,7 @@ import { hostaffItems } from '@/lib/hostaff.data';
 import { LogOut } from 'lucide-react';
 import { boheadItems } from '@/lib/bohead.data';
 import { bostaffItems } from '@/lib/bostaff.data';
+import { Spinner } from '../ui/spinner';
 
 export default function AppSidebar() {
   const { userRole, logout } = useUserData();
@@ -44,8 +45,8 @@ export default function AppSidebar() {
   };
 
   return !userRole ? (
-    <div className="fixed h-screen w-screen bg-black z-999 flex items-center justify-center">
-      <div className="h-10 w-10 animate-spin border-l-3 border-t-3 border-white rounded-full"></div>
+    <div className="fixed h-screen w-screen bg-white z-999 flex items-center justify-center">
+      <Spinner className="h-10 w-10" />
     </div>
   ) : (
     <Sidebar collapsible="icon">
